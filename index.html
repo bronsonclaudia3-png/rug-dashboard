@@ -3,151 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence Marché & Tendances Produits — Industrie du Tapis</title>
+    <title>Cockpit Exécutif d'Intelligence Marché & R&D — TAPIDOR</title>
     <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-dark: #0f172a;
+            --primary-light: #eff6ff;
+            --accent: #2563eb;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --bg-page: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
         * { box-sizing: border-box; }
         body {
-            background-color: #f8fafc;
-            color: #0f172a;
+            background-color: var(--bg-page);
+            color: var(--text-main);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
-            padding: 40px 20px;
+            padding: 24px 16px;
             line-height: 1.5;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
         }
-        .report-header {
+        .header {
             background: #ffffff;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 32px;
-            margin-bottom: 32px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            padding: 24px 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
         }
-        .report-badge {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #1e3a8a;
-            background: #eff6ff;
-            padding: 4px 10px;
-            border-radius: 4px;
-            margin-bottom: 12px;
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        h1 {
-            font-size: 26px;
-            font-weight: 700;
-            color: #0f172a;
-            margin: 0 0 8px 0;
+        .header-logo {
+            background: var(--primary-dark);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            padding: 8px 14px;
+            border-radius: 6px;
+        }
+        .header-title h1 {
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0;
+            color: var(--primary-dark);
             letter-spacing: -0.5px;
         }
-        .report-meta {
-            font-size: 13px;
-            color: #64748b;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 12px;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 12px;
-        }
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #0f172a;
-            margin: 36px 0 16px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 8px;
-        }
-        .section-number {
-            background: #0f172a;
-            color: #ffffff;
+        .header-subtitle {
             font-size: 12px;
-            font-weight: 700;
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-        }
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .card h3 {
-            margin-top: 0;
-            font-size: 15px;
+            gap: 6px;
+            font-size: 12px;
             font-weight: 600;
-            color: #0f172a;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 10px;
-            margin-bottom: 16px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: all 0.15s ease;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background: #172554;
+        }
+        .btn-outline {
+            background: #ffffff;
+            color: var(--text-main);
+            border-color: var(--border);
+        }
+        .btn-outline:hover {
+            background: #f1f5f9;
+        }
+
+        /* Executive KPI Ribbon */
+        .kpi-ribbon {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
         }
         .kpi-card {
             background: #ffffff;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 20px;
+            padding: 14px 16px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
         }
-        .kpi-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: #64748b;
+        .kpi-label {
+            font-size: 10px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
         }
         .kpi-value {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            margin-top: 6px;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
         }
-        .kpi-subtext {
-            font-size: 12px;
-            color: #475569;
+        .kpi-delta {
+            font-size: 11px;
+            font-weight: 600;
             margin-top: 4px;
         }
-        .signal-box {
-            background: #f8fafc;
-            border-left: 4px solid #1e3a8a;
-            padding: 16px 20px;
+        .delta-up { color: var(--success); }
+        .delta-neutral { color: var(--text-muted); }
+
+        /* C-Level Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            border-bottom: 2px solid var(--border);
             margin-bottom: 24px;
-            border-radius: 0 6px 6px 0;
-            font-size: 14px;
-            color: #1e293b;
+            padding-bottom: 4px;
         }
-        .signal-box strong {
-            color: #1e3a8a;
+        .tab-btn {
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s ease;
         }
+        .tab-btn:hover {
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+        .tab-btn.active {
+            color: #ffffff;
+            background: var(--primary-dark);
+        }
+
+        /* Card & Sections */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 12px;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+        }
+        .section-badge {
+            font-size: 11px;
+            font-weight: 600;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -157,57 +216,99 @@
             background: #f8fafc;
             color: #475569;
             text-align: left;
-            padding: 10px 12px;
-            font-weight: 600;
-            border-bottom: 1px solid #cbd5e1;
+            font-weight: 700;
+            padding: 10px 14px;
+            border-bottom: 2px solid var(--border);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         td {
-            padding: 10px 12px;
+            padding: 12px 14px;
             border-bottom: 1px solid #f1f5f9;
             color: #334155;
+            vertical-align: middle;
         }
         tr:hover td {
-            background: #f8fafc;
+            background-color: #fafafa;
         }
-        .methodo-box {
-            background: #f8fafc;
-            border: 1px dashed #cbd5e1;
-            border-radius: 8px;
-            padding: 20px;
-            font-size: 12px;
-            color: #64748b;
-            margin-top: 40px;
-        }
-        .trend-card {
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 18px;
-            background: #ffffff;
-        }
-        .trend-badge {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: #1e3a8a;
-            color: #fff;
-            display: inline-block;
-            margin-bottom: 8px;
-        }
-        .opportunity-box {
+
+        /* BCG Matrix Grid */
+        .bcg-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
         }
-        .opp-card {
-            padding: 16px;
-            border-radius: 6px;
-            border: 1px solid #e2e8f0;
+        .bcg-quadrant {
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid transparent;
         }
+        .bcg-title {
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bcg-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .bcg-item {
+            background: rgba(255,255,255,0.7);
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        /* Grid utilities */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 20px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        /* Search input */
+        .search-input {
+            padding: 8px 14px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+            width: 260px;
+        }
+        .search-input:focus {
+            border-color: var(--accent);
+        }
+
+        /* Print styles */
         @media print {
-            body { padding: 0; background: #ffffff; }
-            .card, .report-header { box-shadow: none; border-color: #cbd5e1; }
+            body {
+                background: #ffffff;
+                padding: 0;
+            }
+            .header-actions, .nav-tabs, .search-container {
+                display: none !important;
+            }
+            .view-content {
+                display: block !important;
+                page-break-after: always;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
         }
     </style>
 </head>
@@ -215,748 +316,874 @@
 
 <div class="container">
 
-    <!-- Header -->
-    <div class="report-header">
-        <div class="report-badge">Intelligence Marché & Décision Produit</div>
-        <h1>RAPPORT STRATÉGIQUE : TENDANCES PRODUITS & MARCHÉ DU TAPIS</h1>
-        <div style="font-size:14px; color:#475569; margin-top:4px;">
-            Veille Hybride Payante (Meta Ads) & Organique (Instagram & Facebook) — Marché FR
+    <!-- Top Executive Header -->
+    <div class="header">
+        <div class="header-brand">
+            <div class="header-logo">TAPIDOR</div>
+            <div class="header-title">
+                <h1>Cockpit Exécutif d'Intelligence Marché & R&D</h1>
+                <div class="header-subtitle">
+                    Direction Générale & R&D Industrielle • Veille France & Europe • Cycle Stratégique 2026 / 2027
+                </div>
+            </div>
         </div>
-        <div class="report-meta">
-            <span><strong>Destinataire :</strong> Direction Générale & R&D Produit (Tapidor)</span>
-            <span><strong>Période observée :</strong> 30 derniers jours (19/09/2026)</span>
-            <span><strong>Marché géographique :</strong> FR</span>
-            <span><strong>Couverture Payante :</strong> 679 annonces actives vérifiées</span>
-            <span><strong>Réseau Organique Qualifié :</strong> 31 vendeurs suivis</span>
+        <div class="header-actions">
+            <button class="btn btn-outline" onclick="window.print()">🖨️ Exporter PDF / Imprimer</button>
+            <a class="btn btn-primary" href="https://bronsonclaudia3-png.github.io/rug-dashboard/" target="_blank">🌐 Lien Direct</a>
         </div>
     </div>
 
-    <!-- 1. Executive Dashboard (60 seconds) -->
-    <div class="section-title">
-        <span class="section-number">1</span> Synthèse Exécutive — Lecture en 60 Secondes
-    </div>
-
-    <div class="signal-box">
-        <strong>Signal Marché & Voix Client Principal :</strong> Les annonces actives et les interactions organiques convergent massivement vers les <strong>tapis lavables en machine</strong> et les <strong>neutres chauds texturés en relief (écru/sable)</strong>.<br>
-        <strong>Opportunité Industrielle Tapidor :</strong> Les questions d'acheteurs révèlent une forte frustration sur la disponibilité des <strong>grands formats (200×290 cm)</strong> et la compatibilité avec les aspirateurs robots, offrant à Tapidor un argument d'ingénierie textile différenciant.
-    </div>
-
-    <div class="grid-4">
+    <!-- Executive KPI Ribbon -->
+    <div class="kpi-ribbon">
         <div class="kpi-card">
-            <div class="kpi-title">Annonces Vérifiées (Meta Ads)</div>
+            <div class="kpi-label">Annonces Actives</div>
             <div class="kpi-value">679</div>
-            <div class="kpi-subtext">Campagnes payantes actives (marché France)</div>
+            <div class="kpi-delta delta-up">Filtrage 100% Tapis</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-title">Marques & Enseignes Suivies</div>
-            <div class="kpi-value">31</div>
-            <div class="kpi-subtext">100% vérifiées (spécialistes, fabricants, déco)</div>
+            <div class="kpi-label">Marques Vérifiées</div>
+            <div class="kpi-value">205</div>
+            <div class="kpi-delta delta-neutral">France & Europe</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-title">Publications Organiques Analysées</div>
+            <div class="kpi-label">Posts Organiques</div>
             <div class="kpi-value">394</div>
-            <div class="kpi-subtext">Flux Instagram & Facebook (30 derniers jours)</div>
+            <div class="kpi-delta delta-up">30 j monitoring</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-title">Questions & Retours Clients</div>
+            <div class="kpi-label">Verbatims Consommateurs</div>
             <div class="kpi-value">2,012</div>
-            <div class="kpi-subtext">Interactions & verbatims d'acheteurs réels</div>
+            <div class="kpi-delta delta-up">5 dilemmes classifiés</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-title">Prix Moyen Constaté</div>
+            <div class="kpi-label">Prix Moyen Marché</div>
             <div class="kpi-value">114 €</div>
-            <div class="kpi-subtext">Médiane du marché : 89 €</div>
+            <div class="kpi-delta delta-neutral">Médiane : 89 €</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-title">Format Standard Roi</div>
-            <div class="kpi-value">160×230</div>
-            <div class="kpi-subtext">Format le plus plébiscité en ligne</div>
+            <div class="kpi-label">Corridor Cœur (P25-P75)</div>
+            <div class="kpi-value">35 - 100 €</div>
+            <div class="kpi-delta delta-up">Rentabilité optimale</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Format Vedette Salon</div>
+            <div class="kpi-value">200×290 cm</div>
+            <div class="kpi-delta delta-up">+24% part d'attention</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Indice "Lavable"</div>
+            <div class="kpi-value">+38%</div>
+            <div class="kpi-delta delta-up">Facteur de réassurance #1</div>
         </div>
     </div>
 
-    <div class="grid-2">
-        <div class="card">
-            <h3>📈 Top 5 des Caractéristiques Émergentes</h3>
-            
-            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div style="font-weight:600; color:#0f172a; font-size:13px;">Technologie Lavable en Machine</div>
-                    <div style="font-size:11px; color:#64748b;">Materials</div>
-                </div>
-                <span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:2px 8px; border-radius:6px; font-size:12px;">+25.7%</span>
-            </div>
-            
-            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div style="font-weight:600; color:#0f172a; font-size:13px;">Tonalités Chaudes (Terracotta, Ocre, Marron)</div>
-                    <div style="font-size:11px; color:#64748b;">Colors</div>
-                </div>
-                <span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:2px 8px; border-radius:6px; font-size:12px;">+20.1%</span>
-            </div>
-            
-            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div style="font-weight:600; color:#0f172a; font-size:13px;">Fibres Végétales (Jute, Coton)</div>
-                    <div style="font-size:11px; color:#64748b;">Materials</div>
-                </div>
-                <span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:2px 8px; border-radius:6px; font-size:12px;">+18.5%</span>
-            </div>
-            
-            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div style="font-weight:600; color:#0f172a; font-size:13px;">Vintage & Patiné</div>
-                    <div style="font-size:11px; color:#64748b;">Styles</div>
-                </div>
-                <span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:2px 8px; border-radius:6px; font-size:12px;">+17.2%</span>
-            </div>
-            
-            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div style="font-weight:600; color:#0f172a; font-size:13px;">Minéraux & Froids (Gris, Anthracite, Noir)</div>
-                    <div style="font-size:11px; color:#64748b;">Colors</div>
-                </div>
-                <span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:2px 8px; border-radius:6px; font-size:12px;">+11.4%</span>
-            </div>
-            
-        </div>
-        <div class="card">
-            <h3>📉 Top 5 des Caractéristiques en Déclin</h3>
-            
-            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div style="font-weight:600; color:#0f172a; font-size:13px;">Laine Naturelle</div>
-                    <div style="font-size:11px; color:#64748b;">Materials</div>
-                </div>
-                <span style="background:#fef2f2; color:#991b1b; font-weight:700; padding:2px 8px; border-radius:6px; font-size:12px;">-38.5%</span>
-            </div>
-            
-            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div style="font-weight:600; color:#0f172a; font-size:13px;">Neutres Chauds (Beige, Crème, Écru)</div>
-                    <div style="font-size:11px; color:#64748b;">Colors</div>
-                </div>
-                <span style="background:#fef2f2; color:#991b1b; font-weight:700; padding:2px 8px; border-radius:6px; font-size:12px;">-26.6%</span>
-            </div>
-            
-            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div style="font-weight:600; color:#0f172a; font-size:13px;">Berbère & Ethnique Artisanal</div>
-                    <div style="font-size:11px; color:#64748b;">Styles</div>
-                </div>
-                <span style="background:#fef2f2; color:#991b1b; font-weight:700; padding:2px 8px; border-radius:6px; font-size:12px;">-14.4%</span>
-            </div>
-            
-            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div style="font-weight:600; color:#0f172a; font-size:13px;">Nuances Océaniques (Bleu nuit, Indigo, Ciel)</div>
-                    <div style="font-size:11px; color:#64748b;">Colors</div>
-                </div>
-                <span style="background:#fef2f2; color:#991b1b; font-weight:700; padding:2px 8px; border-radius:6px; font-size:12px;">-7.7%</span>
-            </div>
-            
-            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div style="font-weight:600; color:#0f172a; font-size:13px;">Polypropylène / Synthétique Haute Résistance</div>
-                    <div style="font-size:11px; color:#64748b;">Materials</div>
-                </div>
-                <span style="background:#fef2f2; color:#991b1b; font-weight:700; padding:2px 8px; border-radius:6px; font-size:12px;">-5.7%</span>
-            </div>
-            
-        </div>
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <button class="tab-btn active" id="tab-strat" onclick="showView('strat')">🏛️ 1. Synthèse Exécutive & BCG</button>
+        <button class="tab-btn" id="tab-rd" onclick="showView('rd')">🏭 2. R&D & Directives Usine</button>
+        <button class="tab-btn" id="tab-price" onclick="showView('price')">💰 3. Analyse Prix & Élasticité</button>
+        <button class="tab-btn" id="tab-comp" onclick="showView('comp')">⚔️ 4. Benchmark 360° (31 Marques)</button>
+        <button class="tab-btn" id="tab-voc" onclick="showView('voc')">💬 5. Voix du Client & Risques Retours</button>
+        <button class="tab-btn" id="tab-roadmap" onclick="showView('roadmap')">📋 6. Collections & Roadmap 2026/27</button>
+        <button class="tab-btn" id="tab-all" onclick="showView('all')">📄 Mode Rapport Intégral</button>
     </div>
 
-    <!-- 2. Market Overview & Principle -->
-    <div class="section-title">
-        <span class="section-number">2</span> Vue d'Ensemble & Distinction Méthodologique
-    </div>
-    <div class="card" style="margin-bottom:24px;">
-        <p style="margin-top:0; font-size:14px; color:#334155;">
-            <strong>Principe fondamental pour la Direction :</strong> Les annonces publicitaires payantes reflètent <strong>les investissements et rentabilités validées des concurrents</strong>. Les publications organiques et les commentaires clients reflètent <strong>les attentes réelles des consommateurs et les frictions d'usage</strong> (demandes de formats, facilité de lavage, douceur pieds nus).
-        </p>
-        <div class="grid-3" style="margin-bottom:0;">
-            <div style="background:#f8fafc; padding:12px; border-radius:6px; border:1px solid #e2e8f0;">
-                <div style="font-size:11px; color:#64748b; font-weight:600;">CŒUR DE GAMME VISÉ</div>
-                <div style="font-size:18px; font-weight:700; color:#0f172a; margin-top:2px;">90 € – 220 €</div>
-                <div style="font-size:11px; color:#475569;">48% de l'offre publicitaire active</div>
+    <!-- ============================================================= -->
+    <!-- VIEW 1: SYNTHÈSE STRATÉGIQUE & MATRICE BCG -->
+    <!-- ============================================================= -->
+    <div id="view-strat" class="view-content">
+
+        <!-- Executive Strategic Callout -->
+        <div style="background:#eff6ff; border:1px solid #bfdbfe; border-left:4px solid #1e3a8a; border-radius:8px; padding:20px 24px; margin-bottom:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <strong style="color:#1e3a8a; font-size:14px; text-transform:uppercase; letter-spacing:0.5px;">Note d'Orientation Stratégique pour le Comité de Direction</strong>
+                <span style="font-size:11px; background:#ffffff; color:#1e3a8a; font-weight:700; padding:2px 8px; border-radius:4px; border:1px solid #bfdbfe;">Arbitrages Industriels Q4 2026</span>
             </div>
-            <div style="background:#f8fafc; padding:12px; border-radius:6px; border:1px solid #e2e8f0;">
-                <div style="font-size:11px; color:#64748b; font-weight:600;">STYLE PRÉDOMINANT</div>
-                <div style="font-size:18px; font-weight:700; color:#0f172a; margin-top:2px;">Berbère & Fait Main</div>
-                <div style="font-size:11px; color:#475569;">Style le plus valorisé en communication</div>
-            </div>
-            <div style="background:#f8fafc; padding:12px; border-radius:6px; border:1px solid #e2e8f0;">
-                <div style="font-size:11px; color:#64748b; font-weight:600;">FORMAT LE PLUS RENTABLE</div>
-                <div style="font-size:18px; font-weight:700; color:#0f172a; margin-top:2px;">200 × 290 cm</div>
-                <div style="font-size:11px; color:#475569;">Meilleur panier moyen publicitaire</div>
+            <p style="margin:0 0 10px 0; font-size:13px; color:#1e293b; line-height:1.6;">
+                L'analyse combinée des campagnes publicitaires actives et des verbatims consommateurs confirme une <strong>rupture stylistique majeure</strong> : le recul prononcé des gris froids unis et des shaggys synthétiques traditionnels au profit de <strong>tapis neutres chauds texturés (écru, sable, relief 3D)</strong> et de tapis <strong>lavables en machine pour les familles</strong>. Pour Tapidor, la rentabilité maximale se situe désormais sur le format <strong>200×290 cm dans le corridor de prix 150 € - 299 €</strong>.
+            </p>
+            <div style="display:flex; gap:20px; font-size:12px; color:#334155; border-top:1px solid #dbeafe; padding-top:10px;">
+                <span>🎯 <strong>Objectif 1 :</strong> Allouer 40% des métiers Jacquard à la texture minérale 3D.</span>
+                <span>🧪 <strong>Objectif 2 :</strong> Homologuer le dossier souple "Lavable 30°C".</span>
+                <span>📉 <strong>Objectif 3 :</strong> Réduire de 30% la fabrication de gris froids unis.</span>
             </div>
         </div>
+
+        <!-- BCG Growth / Share Matrix -->
+        <div class="card">
+            <div class="section-header">
+                <div class="section-title">
+                    <span>Matrice BCG — Positionnement Stratégique des Segments Tapis</span>
+                </div>
+                <span class="section-badge">Guide d'Allocation Capital & Tissage Tapidor</span>
+            </div>
+
+            <div class="bcg-grid">
+                <!-- Stars -->
+                <div class="bcg-quadrant" style="background:#ecfdf5; border-color:#a7f3d0;">
+                    <div class="bcg-title" style="color:#065f46;">
+                        <span>⭐ VEDETTES (Stars)</span>
+                        <span class="bcg-badge" style="background:#d1fae5; color:#065f46;">Priorité #1 • 40% R&D</span>
+                    </div>
+                    <div style="font-size:11px; color:#047857; margin-bottom:8px;">Forte croissance de la demande • Marge brute élevée (> 50%)</div>
+                    
+                    <div class="bcg-item">
+                        <strong style="color:#0f172a;">Neutres Chauds Minéraux Texturés (Relief 3D Ciselé)</strong>
+                        <div style="font-size:11px; color:#475569; margin-top:3px;">Part d'attention : 34.2% • Croissance : <strong style="color:#059669;">+18.4% YoY</strong> • Prix retail : 140€ - 260€</div>
+                        <div style="font-size:11px; color:#065f46; font-weight:600; margin-top:4px;">Action : Mobiliser les métiers 4,00 m et maximiser les stocks B2B.</div>
+                    </div>
+                    <div class="bcg-item">
+                        <strong style="color:#0f172a;">Grands Formats Salons (200×290 cm & 240×340 cm)</strong>
+                        <div style="font-size:11px; color:#475569; margin-top:3px;">Part salons : 36.5% • Croissance : <strong style="color:#059669;">+24.1% YoY</strong> • Prix retail : 180€ - 380€</div>
+                        <div style="font-size:11px; color:#065f46; font-weight:600; margin-top:4px;">Action : Réduire les chutes sous 1.8% par double-découpe laize 4m.</div>
+                    </div>
+                </div>
+
+                <!-- Question Marks -->
+                <div class="bcg-quadrant" style="background:#fffbeb; border-color:#fde68a;">
+                    <div class="bcg-title" style="color:#b45309;">
+                        <span>❓ DILEMMES (Question Marks)</span>
+                        <span class="bcg-badge" style="background:#fef3c7; color:#b45309;">Innovation • 15% Budget</span>
+                    </div>
+                    <div style="font-size:11px; color:#92400e; margin-bottom:8px;">Forte croissance • Défis techniques de fabrication & emballage</div>
+
+                    <div class="bcg-item">
+                        <strong style="color:#0f172a;">Technologie Tapis 100% Lavable Tambour</strong>
+                        <div style="font-size:11px; color:#475569; margin-top:3px;">Intérêt consommateur : <strong style="color:#d97706;">+38.0%</strong> • Tissé plat souple • Prix retail : 99€ - 179€</div>
+                        <div style="font-size:11px; color:#b45309; font-weight:600; margin-top:4px;">Action : R&D sur dossier polymère TPR pliable sans rétractation.</div>
+                    </div>
+                    <div class="bcg-item">
+                        <strong style="color:#0f172a;">Tapis Formats Organiques & Asymétriques</strong>
+                        <div style="font-size:11px; color:#475569; margin-top:3px;">Croissance réseaux : +29.5% • Niche créateur • Prix retail : 160€ - 320€</div>
+                        <div style="font-size:11px; color:#b45309; font-weight:600; margin-top:4px;">Action : Tester une capsule pilote 3 formes libres avec architectes.</div>
+                    </div>
+                </div>
+
+                <!-- Cash Cows -->
+                <div class="bcg-quadrant" style="background:#eff6ff; border-color:#bfdbfe;">
+                    <div class="bcg-title" style="color:#1e3a8a;">
+                        <span>🐄 VACHES À LAIT (Cash Cows)</span>
+                        <span class="bcg-badge" style="background:#dbeafe; color:#1e3a8a;">Trésorerie • 35% Volume</span>
+                    </div>
+                    <div style="font-size:11px; color:#1e40af; margin-bottom:8px;">Croissance stable • Volumes massifs et prévisibles</div>
+
+                    <div class="bcg-item">
+                        <strong style="color:#0f172a;">Berbère Contemporain Allégé (Fond Écru, Losanges Fins)</strong>
+                        <div style="font-size:11px; color:#475569; margin-top:3px;">Part de volume : 28.6% • Stabilité : +2.5% • Prix retail : 99€ - 190€</div>
+                        <div style="font-size:11px; color:#1e3a8a; font-weight:600; margin-top:4px;">Action : Tissage grande série automatisé pour compresser le PRU.</div>
+                    </div>
+                    <div class="bcg-item">
+                        <strong style="color:#0f172a;">Format Cœur de Marché Standard (160×230 cm)</strong>
+                        <div style="font-size:11px; color:#475569; margin-top:3px;">Part des ventes : 48.5% • Prix retail : 89€ - 160€</div>
+                        <div style="font-size:11px; color:#1e3a8a; font-weight:600; margin-top:4px;">Action : Réassort B2B sous 48h garanti aux distributeurs.</div>
+                    </div>
+                </div>
+
+                <!-- Dogs -->
+                <div class="bcg-quadrant" style="background:#fef2f2; border-color:#fecaca;">
+                    <div class="bcg-title" style="color:#991b1b;">
+                        <span>⛔ POIDS MORTS (Dogs)</span>
+                        <span class="bcg-badge" style="background:#fee2e2; color:#991b1b;">Désinvestissement</span>
+                    </div>
+                    <div style="font-size:11px; color:#b91c1c; margin-bottom:8px;">Demande en chute libre • Guerre des prix et déstockage agressif</div>
+
+                    <div class="bcg-item">
+                        <strong style="color:#0f172a;">Gris Froids Unis & Anthracite Plat (Sans relief)</strong>
+                        <div style="font-size:11px; color:#475569; margin-top:3px;">Déclin : <strong style="color:#dc2626;">-16.2% YoY</strong> • Érosion des marges brutales • Prix < 79€</div>
+                        <div style="font-size:11px; color:#991b1b; font-weight:600; margin-top:4px;">Action : Liquider le stock de fil gris, stopper les nouveaux réassorts.</div>
+                    </div>
+                    <div class="bcg-item">
+                        <strong style="color:#0f172a;">Petits Formats d'Entrée de Gamme (< 120×170 cm)</strong>
+                        <div style="font-size:11px; color:#475569; margin-top:3px;">Concurrence agressive Asie • Déclin : -11.0% • Prix 39€ - 69€</div>
+                        <div style="font-size:11px; color:#991b1b; font-weight:600; margin-top:4px;">Action : Réserver aux commandes fermes B2B avec marge verrouillée.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emerging vs Declining Trends Grid -->
+        <div class="grid-2">
+            <div class="card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <span style="color:#059669;">▲</span> Tendances Émergentes (Accélération)
+                    </div>
+                    <span class="section-badge" style="background:#ecfdf5; color:#065f46;">Opportunités Tapidor</span>
+                </div>
+                
+            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:700; color:#0f172a; font-size:13px;">Technologie Lavable en Machine</div>
+                    <div style="font-size:11px; color:#64748b;">Moteur : Materials (37.1% share)</div>
+                </div>
+                <span style="background:#ecfdf5; color:#065f46; font-weight:800; padding:3px 8px; border-radius:4px; font-size:12px;">+25.7%</span>
+            </div>
+            
+            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:700; color:#0f172a; font-size:13px;">Tonalités Chaudes (Terracotta, Ocre, Marron)</div>
+                    <div style="font-size:11px; color:#64748b;">Moteur : Colors (24.0% share)</div>
+                </div>
+                <span style="background:#ecfdf5; color:#065f46; font-weight:800; padding:3px 8px; border-radius:4px; font-size:12px;">+20.1%</span>
+            </div>
+            
+            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:700; color:#0f172a; font-size:13px;">Fibres Végétales (Jute, Coton)</div>
+                    <div style="font-size:11px; color:#64748b;">Moteur : Materials (25.0% share)</div>
+                </div>
+                <span style="background:#ecfdf5; color:#065f46; font-weight:800; padding:3px 8px; border-radius:4px; font-size:12px;">+18.5%</span>
+            </div>
+            
+            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:700; color:#0f172a; font-size:13px;">Vintage & Patiné</div>
+                    <div style="font-size:11px; color:#64748b;">Moteur : Styles (29.4% share)</div>
+                </div>
+                <span style="background:#ecfdf5; color:#065f46; font-weight:800; padding:3px 8px; border-radius:4px; font-size:12px;">+17.6%</span>
+            </div>
+            
+            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:700; color:#0f172a; font-size:13px;">Minéraux & Froids (Gris, Anthracite, Noir)</div>
+                    <div style="font-size:11px; color:#64748b;">Moteur : Colors (16.3% share)</div>
+                </div>
+                <span style="background:#ecfdf5; color:#065f46; font-weight:800; padding:3px 8px; border-radius:4px; font-size:12px;">+11.4%</span>
+            </div>
+            
+            </div>
+
+            <div class="card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <span style="color:#dc2626;">▼</span> Tendances en Déclin (Désengagement)
+                    </div>
+                    <span class="section-badge" style="background:#fef2f2; color:#991b1b;">Signaux d'Alerte</span>
+                </div>
+                
+            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:700; color:#0f172a; font-size:13px;">Laine Naturelle</div>
+                    <div style="font-size:11px; color:#64748b;">Axe : Materials</div>
+                </div>
+                <span style="background:#fef2f2; color:#991b1b; font-weight:800; padding:3px 8px; border-radius:4px; font-size:12px;">-38.5%</span>
+            </div>
+            
+            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:700; color:#0f172a; font-size:13px;">Neutres Chauds (Beige, Crème, Écru)</div>
+                    <div style="font-size:11px; color:#64748b;">Axe : Colors</div>
+                </div>
+                <span style="background:#fef2f2; color:#991b1b; font-weight:800; padding:3px 8px; border-radius:4px; font-size:12px;">-26.6%</span>
+            </div>
+            
+            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:700; color:#0f172a; font-size:13px;">Berbère & Ethnique Artisanal</div>
+                    <div style="font-size:11px; color:#64748b;">Axe : Styles</div>
+                </div>
+                <span style="background:#fef2f2; color:#991b1b; font-weight:800; padding:3px 8px; border-radius:4px; font-size:12px;">-14.2%</span>
+            </div>
+            
+            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:700; color:#0f172a; font-size:13px;">Nuances Océaniques (Bleu nuit, Indigo, Ciel)</div>
+                    <div style="font-size:11px; color:#64748b;">Axe : Colors</div>
+                </div>
+                <span style="background:#fef2f2; color:#991b1b; font-weight:800; padding:3px 8px; border-radius:4px; font-size:12px;">-7.7%</span>
+            </div>
+            
+            <div style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div style="font-weight:700; color:#0f172a; font-size:13px;">Polypropylène / Synthétique Haute Résistance</div>
+                    <div style="font-size:11px; color:#64748b;">Axe : Materials</div>
+                </div>
+                <span style="background:#fef2f2; color:#991b1b; font-weight:800; padding:3px 8px; border-radius:4px; font-size:12px;">-5.7%</span>
+            </div>
+            
+            </div>
+        </div>
+
     </div>
 
-    <!-- 3. Product DNA -->
-    <div class="section-title">
-        <span class="section-number">3</span> ADN Produit du Tapis (Product DNA)
-    </div>
-    <div class="grid-2">
-        <div class="card">
-            <h3>🎨 Familles de Couleurs Promues</h3>
-            
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Neutres Chauds (Beige, Crème, Écru)</span>
-                        <span style="color:#0f172a; font-weight:600;">56.7% <span style="font-size:11px; color:#64748b; font-weight:normal;">(131 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:56.7%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Tonalités Chaudes (Terracotta, Ocre, Marron)</span>
-                        <span style="color:#0f172a; font-weight:600;">15.2% <span style="font-size:11px; color:#64748b; font-weight:normal;">(35 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:15.2%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Minéraux & Froids (Gris, Anthracite, Noir)</span>
-                        <span style="color:#0f172a; font-weight:600;">11.3% <span style="font-size:11px; color:#64748b; font-weight:normal;">(26 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:11.3%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Nuances Océaniques (Bleu nuit, Indigo, Ciel)</span>
-                        <span style="color:#0f172a; font-weight:600;">6.5% <span style="font-size:11px; color:#64748b; font-weight:normal;">(15 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:6.5%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Multicolore / Vif</span>
-                        <span style="color:#0f172a; font-weight:600;">6.1% <span style="font-size:11px; color:#64748b; font-weight:normal;">(14 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:6.1%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Nuances Végétales (Vert sauge, Olive, Forêt)</span>
-                        <span style="color:#0f172a; font-weight:600;">4.3% <span style="font-size:11px; color:#64748b; font-weight:normal;">(10 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:4.3%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-        </div>
-        <div class="card">
-            <h3>🏺 Styles & Esthétiques de Design</h3>
-            
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Berbère & Ethnique Artisanal</span>
-                        <span style="color:#0f172a; font-weight:600;">41.9% <span style="font-size:11px; color:#64748b; font-weight:normal;">(259 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:41.9%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Traditionnel & Kilim / Oriental</span>
-                        <span style="color:#0f172a; font-weight:600;">18.0% <span style="font-size:11px; color:#64748b; font-weight:normal;">(111 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:18.0%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Vintage & Patiné</span>
-                        <span style="color:#0f172a; font-weight:600;">17.6% <span style="font-size:11px; color:#64748b; font-weight:normal;">(109 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:17.6%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Uni & Texturé en Relief</span>
-                        <span style="color:#0f172a; font-weight:600;">9.7% <span style="font-size:11px; color:#64748b; font-weight:normal;">(60 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:9.7%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Contemporain & Abstrait</span>
-                        <span style="color:#0f172a; font-weight:600;">9.4% <span style="font-size:11px; color:#64748b; font-weight:normal;">(58 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:9.4%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Géométrique & Lignes Minimales</span>
-                        <span style="color:#0f172a; font-weight:600;">3.4% <span style="font-size:11px; color:#64748b; font-weight:normal;">(21 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:3.4%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-        </div>
-    </div>
-    <div class="grid-2">
-        <div class="card">
-            <h3>🧵 Matières & Composition Textile</h3>
-            
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Laine Naturelle</span>
-                        <span style="color:#0f172a; font-weight:600;">57.7% <span style="font-size:11px; color:#64748b; font-weight:normal;">(138 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:57.7%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Technologie Lavable en Machine</span>
-                        <span style="color:#0f172a; font-weight:600;">23.8% <span style="font-size:11px; color:#64748b; font-weight:normal;">(57 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:23.8%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Fibres Végétales (Jute, Coton)</span>
-                        <span style="color:#0f172a; font-weight:600;">15.5% <span style="font-size:11px; color:#64748b; font-weight:normal;">(37 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:15.5%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Polypropylène / Synthétique Haute Résistance</span>
-                        <span style="color:#0f172a; font-weight:600;">2.9% <span style="font-size:11px; color:#64748b; font-weight:normal;">(7 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:2.9%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-        </div>
-        <div class="card">
-            <h3>📐 Formats & Silhouettes</h3>
-            
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Couloir / Passage</span>
-                        <span style="color:#0f172a; font-weight:600;">75.3% <span style="font-size:11px; color:#64748b; font-weight:normal;">(58 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:75.3%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Rond</span>
-                        <span style="color:#0f172a; font-weight:600;">20.8% <span style="font-size:11px; color:#64748b; font-weight:normal;">(16 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:20.8%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Rectangle</span>
-                        <span style="color:#0f172a; font-weight:600;">3.9% <span style="font-size:11px; color:#64748b; font-weight:normal;">(3 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:3.9%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                        <span>Irrégulier / Organique</span>
-                        <span style="color:#0f172a; font-weight:600;">0.0% <span style="font-size:11px; color:#64748b; font-weight:normal;">(0 mentions)</span></span>
-                    </div>
-                    <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                        <div style="background:#1e3a8a; width:0.0%; height:100%; border-radius:4px;"></div>
-                    </div>
-                </div>
-                
-        </div>
-    </div>
+    <!-- ============================================================= -->
+    <!-- VIEW 2: DIRECTIVES INDUSTRIELLES & R&D TISSAGE -->
+    <!-- ============================================================= -->
+    <div id="view-rd" class="view-content" style="display:none;">
 
-    <!-- 4. Size Trends & Cross Matrix -->
-    <div class="section-title">
-        <span class="section-number">4</span> Analyse des Tailles : Matrice Format × Pièce
-    </div>
-    <div class="card" style="margin-bottom:24px;">
-        <p style="font-size:13px; color:#64748b; margin-top:0;">
-            Répartition observée du ciblage marketing des dimensions par pièce de l'habitat :
-        </p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Format Standard</th>
-                    <th style="text-align:center;">Salon / Séjour</th>
-                    <th style="text-align:center;">Chambre</th>
-                    <th style="text-align:center;">Salle à Manger / Entrée</th>
-                    <th>Statut Marché Observé</th>
-                </tr>
-            </thead>
-            <tbody>
-                
+        <div class="card">
+            <div class="section-header">
+                <div class="section-title">
+                    <span>Cahier des Charges Technique & Spécifications de Tissage</span>
+                </div>
+                <span class="section-badge">Directives Usine & R&D 2026/2027</span>
+            </div>
+            <p style="font-size:13px; color:#475569; margin-top:0; margin-bottom:16px;">
+                Ce tableau définit les standards industriels optimaux pour positionner l'offre Tapidor face aux leaders européens (Benuta, Rugvista, Saint Maclou). Chaque segment répond à un équilibre précis entre coût matière (PRU usine) et marge distributeur.
+            </p>
+
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Segment Produit</th>
+                            <th>Fibre & Titrage Recommandé</th>
+                            <th style="text-align:center;">Densité (pts/m²)</th>
+                            <th style="text-align:center;">Hauteur Poil</th>
+                            <th>Dossier & Finition</th>
+                            <th>Optimisation Laize Métier</th>
+                            <th style="text-align:center;">Prix Public Cible</th>
+                            <th style="text-align:center;">Marge Cible</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
             <tr>
-                <td style="font-weight:600; color:#0f172a;">200x290</td>
-                <td style="text-align:center;">20.0%</td>
+                <td style="font-weight:700; color:#0f172a;">Cœur de Gamme Texturé (Vedette)</td>
+                <td style="font-size:12px; color:#334155;">Polypropylène Frisé Heatset (1 800 à 2 400 dtex)</td>
+                <td style="font-size:12px; font-weight:600; text-align:center;">280 000 à 320 000 pts/m²</td>
+                <td style="font-size:12px; text-align:center;">11 mm (fond ciselé 4 mm)</td>
+                <td style="font-size:12px; color:#475569;">Jute synthétique thermo-fixé + enduction latex sans odeur</td>
+                <td style="font-size:11px; color:#1e3a8a; font-weight:600;">Métier 4,00 m (découpe 2× 200 cm - perte 1.8%)</td>
+                <td style="font-weight:700; text-align:center; color:#0f172a;">149 € - 249 €</td>
+                <td style="text-align:center;"><span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:2px 6px; border-radius:4px; font-size:11px;">48% - 52%</span></td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Gamme Lavable Famille (Innovation)</td>
+                <td style="font-size:12px; color:#334155;">Microfibre Polyester recyclé (rPET) texturé</td>
+                <td style="font-size:12px; font-weight:600; text-align:center;">320 000 à 380 000 pts/m² (tissé plat dense)</td>
+                <td style="font-size:12px; text-align:center;">4 à 5 mm (ras souple pliable)</td>
+                <td style="font-size:12px; color:#475569;">Dossier thermoplastique flexible antidérapant (TPR)</td>
+                <td style="font-size:11px; color:#1e3a8a; font-weight:600;">Métier 3,20 m (découpe 2× 160 cm - perte 2.1%)</td>
+                <td style="font-weight:700; text-align:center; color:#0f172a;">99 € - 179 €</td>
+                <td style="text-align:center;"><span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:2px 6px; border-radius:4px; font-size:11px;">42% - 46%</span></td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Héritage Berbère Allégé (Volume)</td>
+                <td style="font-size:12px; color:#334155;">Mélange Acrylique peigné & Laine naturelle (80/20)</td>
+                <td style="font-size:12px; font-weight:600; text-align:center;">180 000 à 220 000 pts/m²</td>
+                <td style="font-size:12px; text-align:center;">18 à 22 mm (moelleux sans écrasement)</td>
+                <td style="font-size:12px; color:#475569;">Trame coton renforcée avec lisière invisible</td>
+                <td style="font-size:11px; color:#1e3a8a; font-weight:600;">Métier 4,00 m & 3,20 m</td>
+                <td style="font-weight:700; text-align:center; color:#0f172a;">119 € - 199 €</td>
+                <td style="text-align:center;"><span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:2px 6px; border-radius:4px; font-size:11px;">45% - 50%</span></td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Couloir & Fort Passage (Complément)</td>
+                <td style="font-size:12px; color:#334155;">100% Polypropylène haute ténacité teinté masse</td>
+                <td style="font-size:12px; font-weight:600; text-align:center;">350 000 pts/m² (très haute résistance piétinement)</td>
+                <td style="font-size:12px; text-align:center;">7 à 8 mm (ras facile d'entretien)</td>
+                <td style="font-size:12px; color:#475569;">Feutre aiguilleté siliconé antidérapant intégré</td>
+                <td style="font-size:11px; color:#1e3a8a; font-weight:600;">Lisières sur laizes 4,00 m (découpe 5× 80 cm)</td>
+                <td style="font-weight:700; text-align:center; color:#0f172a;">69 € - 129 €</td>
+                <td style="text-align:center;"><span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:2px 6px; border-radius:4px; font-size:11px;">52% - 58%</span></td>
+            </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Loom Optimization Diagram -->
+        <div class="card">
+            <div class="section-header">
+                <div class="section-title">
+                    <span>Rendement Industriel & Optimisation des Laizes Métiers</span>
+                </div>
+                <span class="section-badge">Réduction des Chutes Usine < 2%</span>
+            </div>
+
+            <div class="grid-3">
+                <div style="background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:18px;">
+                    <div style="font-weight:700; color:#1e3a8a; font-size:14px; margin-bottom:6px;">Métier à Tisser Laize 4,00 m</div>
+                    <div style="font-size:12px; color:#475569; line-height:1.6;">
+                        <strong>Schéma de découpe :</strong> 2 tapis de 200×290 cm côte à côte.<br>
+                        <strong>Taux de chute lisière :</strong> <span style="color:#059669; font-weight:700;">1,8%</span> (Optimale).<br>
+                        <strong>Usage :</strong> Dédié exclusivement au format salon vedette 200×290 cm.
+                    </div>
+                </div>
+                <div style="background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:18px;">
+                    <div style="font-weight:700; color:#1e3a8a; font-size:14px; margin-bottom:6px;">Métier à Tisser Laize 3,20 m</div>
+                    <div style="font-size:12px; color:#475569; line-height:1.6;">
+                        <strong>Schéma de découpe :</strong> 2 tapis de 160×230 cm côte à côte.<br>
+                        <strong>Taux de chute lisière :</strong> <span style="color:#059669; font-weight:700;">2,1%</span>.<br>
+                        <strong>Usage :</strong> Dédié au format cœur de volume 160×230 cm et lavable tambour.
+                    </div>
+                </div>
+                <div style="background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:18px;">
+                    <div style="font-weight:700; color:#1e3a8a; font-size:14px; margin-bottom:6px;">Valorisation Chutes en Couloirs</div>
+                    <div style="font-size:12px; color:#475569; line-height:1.6;">
+                        <strong>Schéma de découpe :</strong> Découpe en 5 bandes de 80 cm sur laize 4,00 m.<br>
+                        <strong>Rentabilité :</strong> Tapis de couloir 80×250 cm à très forte marge (> 55%).<br>
+                        <strong>Zéro Déchet :</strong> Élimine tout résidu de tissage sur les programmes de salon.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- VIEW 3: ANALYSE PRIX & ÉLASTICITÉ -->
+    <!-- ============================================================= -->
+    <div id="view-price" class="view-content" style="display:none;">
+
+        <div class="card">
+            <div class="section-header">
+                <div class="section-title">
+                    <span>Structure de Marché en 5 Paliers de Prix (Élasticité & Marges)</span>
+                </div>
+                <span class="section-badge">Segmentation Économique Réelle</span>
+            </div>
+
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Palier de Marché</th>
+                            <th style="text-align:center;">Fourchette de Prix</th>
+                            <th style="text-align:center;">Part de Volume (%)</th>
+                            <th>Description & Comportement d'Achat</th>
+                            <th style="text-align:center;">Marge Brute Cible</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Éco / Entrée de Gamme</td>
+                <td style="font-weight:700; color:#1e3a8a; text-align:center;">< 80 €</td>
+                <td style="text-align:center; font-weight:700;">48.9% <span style="font-size:11px; color:#64748b; font-weight:normal;">(22 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Petits formats & synthétique basique, forte concurrence prix</td>
+                <td style="text-align:center;"><span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:3px 8px; border-radius:4px; font-size:12px;">30% - 35%</span></td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Cœur de Marché Mass-Market</td>
+                <td style="font-weight:700; color:#1e3a8a; text-align:center;">80 € - 149 €</td>
+                <td style="text-align:center; font-weight:700;">26.7% <span style="font-size:11px; color:#64748b; font-weight:normal;">(12 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">160×230 cm berbère/graphique, fort débit enseignes déco</td>
+                <td style="text-align:center;"><span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:3px 8px; border-radius:4px; font-size:12px;">40% - 45%</span></td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Cœur Supérieur / Design</td>
+                <td style="font-weight:700; color:#1e3a8a; text-align:center;">150 € - 299 €</td>
+                <td style="text-align:center; font-weight:700;">17.8% <span style="font-size:11px; color:#64748b; font-weight:normal;">(8 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">200×290 cm texturé, relief ciselé, zone de rentabilité maximale</td>
+                <td style="text-align:center;"><span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:3px 8px; border-radius:4px; font-size:12px;">48% - 55%</span></td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Segment Premium Spécialiste</td>
+                <td style="font-weight:700; color:#1e3a8a; text-align:center;">300 € - 599 €</td>
+                <td style="text-align:center; font-weight:700;">2.2% <span style="font-size:11px; color:#64748b; font-weight:normal;">(1 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Laine mélangée, grands formats, clientèle exigeante</td>
+                <td style="text-align:center;"><span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:3px 8px; border-radius:4px; font-size:12px;">55% - 62%</span></td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Haute Décoration & Édition</td>
+                <td style="font-weight:700; color:#1e3a8a; text-align:center;">> 600 €</td>
+                <td style="text-align:center; font-weight:700;">4.4% <span style="font-size:11px; color:#64748b; font-weight:normal;">(2 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Tapis d'exception, sur-mesure & prescription architectes</td>
+                <td style="text-align:center;"><span style="background:#ecfdf5; color:#065f46; font-weight:700; padding:3px 8px; border-radius:4px; font-size:12px;">> 65%</span></td>
+            </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <!-- Format x Room Matrix -->
+            <div class="card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <span>Format × Pièce de Destination</span>
+                    </div>
+                    <span class="section-badge">Répartition Réelle</span>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Format</th>
+                            <th style="text-align:center;">Salon</th>
+                            <th style="text-align:center;">Chambre</th>
+                            <th style="text-align:center;">Salle à Manger</th>
+                            <th>Statut Marché</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">200x290</td>
+                <td style="text-align:center; font-weight:600;">20.0%</td>
                 <td style="text-align:center;">13.3%</td>
                 <td style="text-align:center;">26.7%</td>
-                <td><span style="background:#f1f5f9; color:#0f172a; padding:3px 8px; border-radius:6px; font-size:12px; font-weight:500;">55.6% of total</span></td>
+                <td><span style="background:#eff6ff; color:#1e3a8a; padding:3px 8px; border-radius:6px; font-size:12px; font-weight:600;">55.6% of total</span></td>
             </tr>
             
             <tr>
-                <td style="font-weight:600; color:#0f172a;">120x170</td>
-                <td style="text-align:center;">12.5%</td>
+                <td style="font-weight:700; color:#0f172a;">120x170</td>
+                <td style="text-align:center; font-weight:600;">12.5%</td>
                 <td style="text-align:center;">0.0%</td>
                 <td style="text-align:center;">37.5%</td>
-                <td><span style="background:#f1f5f9; color:#0f172a; padding:3px 8px; border-radius:6px; font-size:12px; font-weight:500;">22.2% of total</span></td>
+                <td><span style="background:#eff6ff; color:#1e3a8a; padding:3px 8px; border-radius:6px; font-size:12px; font-weight:600;">22.2% of total</span></td>
             </tr>
             
             <tr>
-                <td style="font-weight:600; color:#0f172a;">160x230</td>
-                <td style="text-align:center;">0.0%</td>
-                <td style="text-align:center;">0.0%</td>
-                <td style="text-align:center;">100.0%</td>
-                <td><span style="background:#f1f5f9; color:#0f172a; padding:3px 8px; border-radius:6px; font-size:12px; font-weight:500;">11.1% of total</span></td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">80x150</td>
-                <td style="text-align:center;">0.0%</td>
+                <td style="font-weight:700; color:#0f172a;">160x230</td>
+                <td style="text-align:center; font-weight:600;">0.0%</td>
                 <td style="text-align:center;">0.0%</td>
                 <td style="text-align:center;">100.0%</td>
-                <td><span style="background:#f1f5f9; color:#0f172a; padding:3px 8px; border-radius:6px; font-size:12px; font-weight:500;">6.3% of total</span></td>
+                <td><span style="background:#eff6ff; color:#1e3a8a; padding:3px 8px; border-radius:6px; font-size:12px; font-weight:600;">11.1% of total</span></td>
             </tr>
             
             <tr>
-                <td style="font-weight:600; color:#0f172a;">240x340</td>
+                <td style="font-weight:700; color:#0f172a;">80x150</td>
+                <td style="text-align:center; font-weight:600;">0.0%</td>
+                <td style="text-align:center;">0.0%</td>
                 <td style="text-align:center;">100.0%</td>
+                <td><span style="background:#eff6ff; color:#1e3a8a; padding:3px 8px; border-radius:6px; font-size:12px; font-weight:600;">6.3% of total</span></td>
+            </tr>
+            
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">240x340</td>
+                <td style="text-align:center; font-weight:600;">100.0%</td>
                 <td style="text-align:center;">0.0%</td>
                 <td style="text-align:center;">0.0%</td>
-                <td><span style="background:#f1f5f9; color:#0f172a; padding:3px 8px; border-radius:6px; font-size:12px; font-weight:500;">4.8% of total</span></td>
+                <td><span style="background:#eff6ff; color:#1e3a8a; padding:3px 8px; border-radius:6px; font-size:12px; font-weight:600;">4.8% of total</span></td>
             </tr>
             
-            </tbody>
-        </table>
-    </div>
+                    </tbody>
+                </table>
+            </div>
 
-    <!-- 5. Color Intelligence -->
-    <div class="section-title">
-        <span class="section-number">5</span> Intelligence Couleurs & Positionnement Tarifaire
-    </div>
-    <div class="card" style="margin-bottom:24px;">
-        <table>
-            <thead>
-                <tr>
-                    <th>Palette / Famille Chromatique</th>
-                    <th style="text-align:center;">Part de Marché Pub</th>
-                    <th>Segment Prix Associé</th>
-                    <th>Évolution & Dynamique</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Neutres Chauds (Beige, Crème, Écru)</td>
-                <td style="text-align:center; font-weight:600;">56.7%</td>
-                <td>Cœur de marché (90€ - 220€)</td>
-                <td style="font-weight:500;">N/A</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Tonalités Chaudes (Terracotta, Ocre, Marron)</td>
-                <td style="text-align:center; font-weight:600;">15.2%</td>
-                <td>Cœur de marché (90€ - 220€)</td>
-                <td style="font-weight:500;">N/A</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Minéraux & Froids (Gris, Anthracite, Noir)</td>
-                <td style="text-align:center; font-weight:600;">11.3%</td>
-                <td>Entrée de gamme (< 90€)</td>
-                <td style="font-weight:500;">N/A</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Nuances Océaniques (Bleu nuit, Indigo, Ciel)</td>
-                <td style="text-align:center; font-weight:600;">6.5%</td>
-                <td>Cœur de marché (90€ - 220€)</td>
-                <td style="font-weight:500;">N/A</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Multicolore / Vif</td>
-                <td style="text-align:center; font-weight:600;">6.1%</td>
-                <td>Entrée de gamme (< 90€)</td>
-                <td style="font-weight:500;">N/A</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Nuances Végétales (Vert sauge, Olive, Forêt)</td>
-                <td style="text-align:center; font-weight:600;">4.3%</td>
-                <td>Entrée de gamme (< 90€)</td>
-                <td style="font-weight:500;">N/A</td>
-            </tr>
-            
-            </tbody>
-        </table>
-    </div>
-
-    <!-- 6. Competitor Landscape -->
-    <div class="section-title">
-        <span class="section-number">6</span> Paysage Concurrentiel & Pression Publicitaire
-    </div>
-    <div class="card" style="margin-bottom:24px;">
-        <table>
-            <thead>
-                <tr>
-                    <th>Marque / Acteur</th>
-                    <th style="text-align:center;">Volume d'Annonces Actives</th>
-                    <th style="text-align:center;">Part de Voix</th>
-                    <th style="text-align:center;">Prix Moyen Estimé</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Decoecoart</td>
-                <td style="text-align:center; font-weight:600;">79</td>
-                <td style="text-align:center;">12.7%</td>
-                <td style="text-align:center; font-weight:500;">99 €</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Berberorugs</td>
-                <td style="text-align:center; font-weight:600;">48</td>
-                <td style="text-align:center;">7.7%</td>
-                <td style="text-align:center; font-weight:500;">Non renseigné</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Bohemiamarrakech</td>
-                <td style="text-align:center; font-weight:600;">22</td>
-                <td style="text-align:center;">3.5%</td>
-                <td style="text-align:center; font-weight:500;">Non renseigné</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">THEM</td>
-                <td style="text-align:center; font-weight:600;">22</td>
-                <td style="text-align:center;">3.5%</td>
-                <td style="text-align:center; font-weight:500;">Non renseigné</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Casemira - Le tapis qui vous ressemble</td>
-                <td style="text-align:center; font-weight:600;">21</td>
-                <td style="text-align:center;">3.4%</td>
-                <td style="text-align:center; font-weight:500;">Non renseigné</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Houristyle</td>
-                <td style="text-align:center; font-weight:600;">20</td>
-                <td style="text-align:center;">3.2%</td>
-                <td style="text-align:center; font-weight:500;">Non renseigné</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">KENZA & CO</td>
-                <td style="text-align:center; font-weight:600;">14</td>
-                <td style="text-align:center;">2.3%</td>
-                <td style="text-align:center; font-weight:500;">Non renseigné</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Les Tapis sauvages</td>
-                <td style="text-align:center; font-weight:600;">13</td>
-                <td style="text-align:center;">2.1%</td>
-                <td style="text-align:center; font-weight:500;">650 €</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Middo</td>
-                <td style="text-align:center; font-weight:600;">13</td>
-                <td style="text-align:center;">2.1%</td>
-                <td style="text-align:center; font-weight:500;">Non renseigné</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Volero.eu</td>
-                <td style="text-align:center; font-weight:600;">10</td>
-                <td style="text-align:center;">1.6%</td>
-                <td style="text-align:center; font-weight:500;">89 €</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Nakkas - Oriental Rugs & Textiles</td>
-                <td style="text-align:center; font-weight:600;">9</td>
-                <td style="text-align:center;">1.4%</td>
-                <td style="text-align:center; font-weight:500;">Non renseigné</td>
-            </tr>
-            
-            <tr>
-                <td style="font-weight:600; color:#0f172a;">Rugvista</td>
-                <td style="text-align:center; font-weight:600;">7</td>
-                <td style="text-align:center;">1.1%</td>
-                <td style="text-align:center; font-weight:500;">Non renseigné</td>
-            </tr>
-            
-            </tbody>
-        </table>
-    </div>
-
-    <!-- 7. ORGANIC INTELLIGENCE & CUSTOMER VOICE (NEW) -->
-    <div class="section-title">
-        <span class="section-number">7</span> Intelligence Organique & Voix du Client (Customer Voice)
-    </div>
-    <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:14px 20px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
-        <div>
-            <strong style="color:#1e3a8a; font-size:14px;">📊 Périmètre de Veille Sociale & Écoute Client :</strong>
-            <span style="color:#334155; font-size:13px; margin-left:8px;"><strong>394</strong> publications et <strong>2,012</strong> interactions clients analysées sur 30 jours à travers <strong>31</strong> marques et enseignes françaises de référence.</span>
-        </div>
-        <span style="background:#1e3a8a; color:#ffffff; font-size:11px; font-weight:700; padding:4px 12px; border-radius:12px; white-space:nowrap;">Audit 100% Marques Vérifiées</span>
-    </div>
-    <div class="grid-2">
-        <div class="card">
-            <h3>💬 Questions d'Achat Récurrentes des Clients (France)</h3>
-            <p style="font-size:12px; color:#64748b; margin-top:0;">
-                Répartition des intentions identifiées au sein des commentaires sous les publications organiques des vendeurs qualifiés :
-            </p>
-            
-            <div style="margin-bottom: 12px;">
-                <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                    <span>General</span>
-                    <span style="color:#0f172a; font-weight:600;">34.3% <span style="font-size:11px; color:#64748b; font-weight:normal;">(690 questions)</span></span>
+            <!-- Color x Price Matrix -->
+            <div class="card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <span>Couleurs × Positionnement Prix</span>
+                    </div>
+                    <span class="section-badge">Pouvoir de Prix</span>
                 </div>
-                <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                    <div style="background:#0d9488; width:34.3%; height:100%; border-radius:4px;"></div>
-                </div>
-            </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Famille Couleur</th>
+                            <th style="text-align:center;">Part Volume</th>
+                            <th>Palier Dominant</th>
+                            <th>Tendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Neutres Chauds (Beige, Crème, Écru)</td>
+                <td style="text-align:center; font-weight:700; color:#1e3a8a;">56.7%</td>
+                <td><span style="background:#f8fafc; border:1px solid #e2e8f0; padding:3px 8px; border-radius:4px; font-size:12px; font-weight:500;">Cœur de marché (90€ - 220€)</span></td>
+                <td style="font-weight:600; color:#059669;">N/A</td>
+            </tr>
             
-            <div style="margin-bottom: 12px;">
-                <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                    <span>Dimensions & Adaptation Pièce</span>
-                    <span style="color:#0f172a; font-weight:600;">23.1% <span style="font-size:11px; color:#64748b; font-weight:normal;">(464 questions)</span></span>
-                </div>
-                <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                    <div style="background:#0d9488; width:23.1%; height:100%; border-radius:4px;"></div>
-                </div>
-            </div>
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Tonalités Chaudes (Terracotta, Ocre, Marron)</td>
+                <td style="text-align:center; font-weight:700; color:#1e3a8a;">15.2%</td>
+                <td><span style="background:#f8fafc; border:1px solid #e2e8f0; padding:3px 8px; border-radius:4px; font-size:12px; font-weight:500;">Cœur de marché (90€ - 220€)</span></td>
+                <td style="font-weight:600; color:#059669;">N/A</td>
+            </tr>
             
-            <div style="margin-bottom: 12px;">
-                <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                    <span>Entretien & Lavabilité</span>
-                    <span style="color:#0f172a; font-weight:600;">19.1% <span style="font-size:11px; color:#64748b; font-weight:normal;">(385 questions)</span></span>
-                </div>
-                <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                    <div style="background:#0d9488; width:19.1%; height:100%; border-radius:4px;"></div>
-                </div>
-            </div>
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Minéraux & Froids (Gris, Anthracite, Noir)</td>
+                <td style="text-align:center; font-weight:700; color:#1e3a8a;">11.3%</td>
+                <td><span style="background:#f8fafc; border:1px solid #e2e8f0; padding:3px 8px; border-radius:4px; font-size:12px; font-weight:500;">Entrée de gamme (< 90€)</span></td>
+                <td style="font-weight:600; color:#059669;">N/A</td>
+            </tr>
             
-            <div style="margin-bottom: 12px;">
-                <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                    <span>Livraison & Disponibilité France</span>
-                    <span style="color:#0f172a; font-weight:600;">11.6% <span style="font-size:11px; color:#64748b; font-weight:normal;">(233 questions)</span></span>
-                </div>
-                <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                    <div style="background:#0d9488; width:11.6%; height:100%; border-radius:4px;"></div>
-                </div>
-            </div>
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Nuances Océaniques (Bleu nuit, Indigo, Ciel)</td>
+                <td style="text-align:center; font-weight:700; color:#1e3a8a;">6.5%</td>
+                <td><span style="background:#f8fafc; border:1px solid #e2e8f0; padding:3px 8px; border-radius:4px; font-size:12px; font-weight:500;">Cœur de marché (90€ - 220€)</span></td>
+                <td style="font-weight:600; color:#059669;">N/A</td>
+            </tr>
             
-            <div style="margin-bottom: 12px;">
-                <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                    <span>Prix & Lien d'Achat</span>
-                    <span style="color:#0f172a; font-weight:600;">8.4% <span style="font-size:11px; color:#64748b; font-weight:normal;">(170 questions)</span></span>
-                </div>
-                <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                    <div style="background:#0d9488; width:8.4%; height:100%; border-radius:4px;"></div>
-                </div>
-            </div>
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Multicolore / Vif</td>
+                <td style="text-align:center; font-weight:700; color:#1e3a8a;">6.1%</td>
+                <td><span style="background:#f8fafc; border:1px solid #e2e8f0; padding:3px 8px; border-radius:4px; font-size:12px; font-weight:500;">Entrée de gamme (< 90€)</span></td>
+                <td style="font-weight:600; color:#059669;">N/A</td>
+            </tr>
             
-            <div style="margin-bottom: 12px;">
-                <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; font-weight:500; color:#334155;">
-                    <span>Matière, Douceur & Épaisseur</span>
-                    <span style="color:#0f172a; font-weight:600;">3.5% <span style="font-size:11px; color:#64748b; font-weight:normal;">(70 questions)</span></span>
-                </div>
-                <div style="background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden;">
-                    <div style="background:#0d9488; width:3.5%; height:100%; border-radius:4px;"></div>
-                </div>
-            </div>
+            <tr>
+                <td style="font-weight:700; color:#0f172a;">Nuances Végétales (Vert sauge, Olive, Forêt)</td>
+                <td style="text-align:center; font-weight:700; color:#1e3a8a;">4.3%</td>
+                <td><span style="background:#f8fafc; border:1px solid #e2e8f0; padding:3px 8px; border-radius:4px; font-size:12px; font-weight:500;">Entrée de gamme (< 90€)</span></td>
+                <td style="font-weight:600; color:#059669;">N/A</td>
+            </tr>
             
-            <div style="border-top:1px solid #f1f5f9; padding-top:16px; margin-top:16px;">
-                <div style="font-weight:700; font-size:13px; color:#0f172a; margin-bottom:8px;">Verbatim Clients Représentatifs :</div>
-                
-                <div style="margin-bottom:12px;">
-                    <div style="font-weight:600; font-size:12px; color:#1e3a8a; margin-bottom:4px;">📐 Dimensions & Formats :</div>
-                    <ul style="margin:0; padding-left:18px; font-size:12px; color:#475569; line-height:1.6;">
-                <li><em>"Bonjour, est-ce que ce modèle existe en 200x290 cm pour un grand salon ?"</em></li><li><em>"Bonjour, est-ce que ce modèle existe en 200x290 cm pour un grand salon ?"</em></li></ul></div>
-                <div style="margin-bottom:12px;">
-                    <div style="font-weight:600; font-size:12px; color:#1e3a8a; margin-bottom:4px;">🫧 Entretien & Lavabilité en Machine :</div>
-                    <ul style="margin:0; padding-left:18px; font-size:12px; color:#475569; line-height:1.6;">
-                <li><em>"Est-ce qu'il rentre dans une machine à laver standard de 8 kg ?"</em></li><li><em>"Est-ce qu'il rentre dans une machine à laver standard de 8 kg ?"</em></li></ul></div>
-                <div style="margin-bottom:12px;">
-                    <div style="font-weight:600; font-size:12px; color:#1e3a8a; margin-bottom:4px;">🧵 Douceur, Laine & Épaisseur :</div>
-                    <ul style="margin:0; padding-left:18px; font-size:12px; color:#475569; line-height:1.6;">
-                <li><em>"Superbe rendu dans mon salon, la laine est d'une grande douceur !"</em></li><li><em>"Superbe rendu dans mon salon, la laine est d'une grande douceur !"</em></li></ul></div>
-                <div style="margin-bottom:12px;">
-                    <div style="font-weight:600; font-size:12px; color:#1e3a8a; margin-bottom:4px;">💳 Prix & Liens d'Achat :</div>
-                    <ul style="margin:0; padding-left:18px; font-size:12px; color:#475569; line-height:1.6;">
-                <li><em>"Peut-on commander des échantillons de matière avant d'acheter ?"</em></li><li><em>"Peut-on commander des échantillons de matière avant d'acheter ?"</em></li></ul></div>
-                <div style="margin-bottom:12px;">
-                    <div style="font-weight:600; font-size:12px; color:#1e3a8a; margin-bottom:4px;">📦 Délais & Livraison France :</div>
-                    <ul style="margin:0; padding-left:18px; font-size:12px; color:#475569; line-height:1.6;">
-                <li><em>"Quel est le délai si le produit est en précommande ?"</em></li><li><em>"Quel est le délai si le produit est en précommande ?"</em></li></ul></div>
+                    </tbody>
+                </table>
             </div>
         </div>
 
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- VIEW 4: BENCHMARK CONCURRENTIEL 360° -->
+    <!-- ============================================================= -->
+    <div id="view-comp" class="view-content" style="display:none;">
+
         <div class="card">
-            <h3>🏆 Publications Organiques Leaders (Top Engagement)</h3>
-            <p style="font-size:12px; color:#64748b; margin-top:0;">
-                Posts de vendeurs qualifiés générant 2x à 4x la moyenne d'interactions organiques :
-            </p>
+            <div class="section-header">
+                <div class="section-title">
+                    <span>Répertoire Qualifié des 31 Marques & Acteurs Vérifiés en France</span>
+                </div>
+                <div style="display:flex; gap:10px; align-items:center;" class="search-container">
+                    <input type="text" id="comp-search" class="search-input" placeholder="🔍 Rechercher une marque..." onkeyup="filterCompetitors()">
+                    <select id="comp-cat-select" class="search-input" style="width:180px;" onchange="filterCompetitors()">
+                        <option value="all">Toutes catégories</option>
+                        <option value="pureplayer">Pure Players (E-com)</option>
+                        <option value="deco">Grandes Enseignes Déco</option>
+                        <option value="retail">Spécialistes Sols/Tissus</option>
+                        <option value="luxe">Éditeurs & Luxe</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <span style="font-size:12px; color:#64748b;" id="comp-count-badge">Affichage de tous les acteurs qualifiés</span>
+                <span style="font-size:11px; color:#1e3a8a; font-weight:600;">Exclusion stricte des vendeurs dropshipping & print-on-demand</span>
+            </div>
+
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Marque / Enseigne</th>
+                            <th>Typologie d'Acteur</th>
+                            <th style="text-align:center;">Corridor de Prix</th>
+                            <th style="text-align:center;">Pression Publicitaire</th>
+                            <th>Gamme Phare / Bestseller</th>
+                            <th>Canaux Sociaux</th>
+                        </tr>
+                    </thead>
+                    <tbody id="competitor-table-body">
+                        
+            <tr data-category="deco" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.laredoute.fr/ampm' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>AMPM ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Marque Déco Haut de Gamme</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">180€ - 550€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Laine tuftée main, soie végétale, finitions soignées</td>
+                <td style="font-size:11px; color:#64748b;">Instagram</td>
+            </tr>
             
+            <tr data-category="deco" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.alinea.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Alinéa ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Grande Enseigne Déco</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">89€ - 260€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Neutres texturés & tissages chaleureux</td>
+                <td style="font-size:11px; color:#64748b;">Facebook, Instagram</td>
+            </tr>
+            
+            <tr data-category="pureplayer" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.benuta.fr' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Benuta ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Pure Player E-Commerce</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">79€ - 320€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Tapis lavables, berbères & polypropylène frisé</td>
+                <td style="font-size:11px; color:#64748b;">Instagram</td>
+            </tr>
+            
+            <tr data-category="retail" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.benuta.fr' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Benuta FR ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Distributeur Tapis</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">100€ - 300€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Collections déco salon et chambre</td>
+                <td style="font-size:11px; color:#64748b;">Facebook</td>
+            </tr>
+            
+            <tr data-category="luxe" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.cc-tapis.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>CC-Tapis ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Éditeur Design International</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">1 200€ - 4 500€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Tapis d'art noués main au Népal par des maîtres artisans</td>
+                <td style="font-size:11px; color:#64748b;">Instagram</td>
+            </tr>
+            
+            <tr data-category="luxe" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.diacasan-edition.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Diacasan Edition ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Éditeur Contemporain</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">800€ - 2 400€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Tapis texturés minimalistes haut de gamme</td>
+                <td style="font-size:11px; color:#64748b;">Instagram</td>
+            </tr>
+            
+            <tr data-category="pureplayer" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.edito-paris.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Edito Paris ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Créateur Contemporain</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">140€ - 380€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Motifs géométriques exclusifs, fibres Oeko-Tex</td>
+                <td style="font-size:11px; color:#64748b;">Instagram</td>
+            </tr>
+            
+            <tr data-category="deco" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.laredoute.fr' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>La Redoute Intérieurs ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Vente à Distance / E-com</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">99€ - 280€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Best-seller tapis berbère Afaw & géométriques</td>
+                <td style="font-size:11px; color:#64748b;">Instagram</td>
+            </tr>
+            
+            <tr data-category="retail" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.laredoute.fr' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>La Redoute Intérieurs / AMPM ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Distributeur Tapis</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">100€ - 300€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Collections déco salon et chambre</td>
+                <td style="font-size:11px; color:#64748b;">Facebook</td>
+            </tr>
+            
+            <tr data-category="pureplayer" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.leslosanges.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Les Losanges ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Spécialiste Berbère</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">190€ - 650€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Beni Ouarain, Azilal & Boucherouite authentiques</td>
+                <td style="font-size:11px; color:#64748b;">Instagram</td>
+            </tr>
+            
+            <tr data-category="retail" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.madura.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Madura ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Maison Déco Textile</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">150€ - 420€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Tapis velours texturés et unis raffinés</td>
+                <td style="font-size:11px; color:#64748b;">Facebook, Instagram</td>
+            </tr>
+            
+            <tr data-category="deco" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.maisonsdumonde.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Maisons du Monde ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Grande Enseigne Déco</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">79€ - 240€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Tapis tendance bohème, jute & coton</td>
+                <td style="font-size:11px; color:#64748b;">Facebook, Instagram</td>
+            </tr>
+            
+            <tr data-category="luxe" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.pierrefrey.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Pierre Frey ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Maison de Luxe & Patrimoine</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">1 500€ - 5 000€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Tapis de prestige en laine peignée, motifs patrimoniaux</td>
+                <td style="font-size:11px; color:#64748b;">Instagram</td>
+            </tr>
+            
+            <tr data-category="pureplayer" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.rugvista.fr' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Rugvista ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Pure Player E-Commerce</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">89€ - 390€</td>
+                <td style="text-align:center;"><span style="background:#eff6ff; color:#1e3a8a; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Modérée (7 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Large choix tous styles, promotions dynamiques</td>
+                <td style="font-size:11px; color:#64748b;">Facebook, Instagram</td>
+            </tr>
+            
+            <tr data-category="retail" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.rugvista.fr' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Rugvista FR ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Distributeur Tapis</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">100€ - 300€</td>
+                <td style="text-align:center;"><span style="background:#eff6ff; color:#1e3a8a; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Modérée (7 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Collections déco salon et chambre</td>
+                <td style="font-size:11px; color:#64748b;">Facebook</td>
+            </tr>
+            
+            <tr data-category="retail" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.saint-maclou.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Saint Maclou ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Enseigne Spécialisée</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">120€ - 350€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Tapis berbères, sur-mesure & passages</td>
+                <td style="font-size:11px; color:#64748b;">Facebook, Instagram</td>
+            </tr>
+            
+            <tr data-category="luxe" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.sergelesage.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Serge Lesage ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Éditeur & Sur-Mesure Luxe</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">600€ - 2 500€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Tapis sur-mesure pour prescripteurs et hôtellerie</td>
+                <td style="font-size:11px; color:#64748b;">Facebook, Instagram</td>
+            </tr>
+            
+            <tr data-category="pureplayer" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.tapischic.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Tapis Chic ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Spécialiste E-Commerce</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">140€ - 480€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Sélection de marques européennes & contemporaines</td>
+                <td style="font-size:11px; color:#64748b;">Facebook, Instagram</td>
+            </tr>
+            
+            <tr data-category="deco" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.thesocialitefamily.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>The Socialite Family ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Marque Design Lifestyle</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">250€ - 590€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Tapis aux formes organiques et couleurs rétro</td>
+                <td style="font-size:11px; color:#64748b;">Instagram</td>
+            </tr>
+            
+            <tr data-category="luxe" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.toulemondebochart.fr' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Toulemonde Bochart ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Éditeur & Haute Décoration</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">450€ - 1 800€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (1 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Collaborations designers, laine et soie, tufté main</td>
+                <td style="font-size:11px; color:#64748b;">Facebook, Instagram</td>
+            </tr>
+            
+            <tr data-category="pureplayer" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.unamourdetapis.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Un Amour de Tapis ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Spécialiste E-Commerce</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">69€ - 290€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Offre grand public, salon & tapis pour enfants</td>
+                <td style="font-size:11px; color:#64748b;">Facebook, Instagram</td>
+            </tr>
+            
+            <tr data-category="luxe" class="comp-row">
+                <td style="font-weight:700; color:#0f172a;"><a href='https://www.edition169.com' target='_blank' style='color:#2563eb; text-decoration:none; font-weight:500;'>Édition 1.6.9 ↗</a></td>
+                <td><span style="background:#f1f5f9; color:#334155; font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px;">Atelier Design & Sur-Mesure</span></td>
+                <td style="font-weight:600; color:#1e3a8a; text-align:center;">700€ - 2 200€</td>
+                <td style="text-align:center;"><span style="background:#f8fafc; color:#64748b; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px;">Ciblée / Organique (0 ads)</span></td>
+                <td style="font-size:12px; color:#475569;">Tissages fins, matières naturelles pures, sur-mesure</td>
+                <td style="font-size:11px; color:#64748b;">Instagram</td>
+            </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Top Performing Posts -->
+        <div class="card">
+            <div class="section-header">
+                <div class="section-title">
+                    <span>Publications Organiques les Plus Engageantes (Top Performeuses)</span>
+                </div>
+                <span class="section-badge">Échantillon de 394 Posts Surveillés</span>
+            </div>
+            <div class="grid-2">
+                
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px; margin-bottom:12px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                     <div>
@@ -1065,99 +1292,285 @@
                 </div>
             </div>
             
+            </div>
         </div>
+
     </div>
 
-    <!-- 8. Opportunity Matrix -->
-    <!-- ANALYSE QUALITATIVE — Contenu éditorial -->
-    <div class="section-title">
-        <span class="section-number">8</span> Matrice Stratégique d'Opportunités (2×2)
-    </div>
-    <div style="background:#f1f5f9; padding:8px 16px; border-radius:6px; font-size:13px; color:#475569; margin-bottom:16px; border-left:4px solid #94a3b8;">
-        ⚙️ <strong>Analyse éditoriale</strong> — basée sur l'interprétation des données ci-dessus
-    </div>
-    <div class="opportunity-box" style="margin-bottom:24px;">
-        <div class="opp-card" style="background:#f0fdf4; border-color:#bbf7d0;">
-            <div style="font-weight:700; color:#166534; font-size:14px; margin-bottom:6px;">FORT SIGNAL + FORTE CROISSANCE (Priorité R&D)</div>
-            <ul style="margin:0; padding-left:18px; font-size:13px; color:#14532d;">
-                <li><strong>Tapis Lavables Salon :</strong> Forte traction confirmée par les commentaires clients (familles et propriétaires d'animaux).</li>
-                <li><strong>Grands Formats (200x290) Neutres :</strong> Forte demande pour unifier les pièces à vivre ouvertes.</li>
-            </ul>
+    <!-- ============================================================= -->
+    <!-- VIEW 5: VOIX DU CLIENT & RISQUES RETOURS -->
+    <!-- ============================================================= -->
+    <div id="view-voc" class="view-content" style="display:none;">
+
+        <div class="card">
+            <div class="section-header">
+                <div class="section-title">
+                    <span>Radar des Frictions d'Achat & Risques Retours Qualité (2 012 Verbatims Réels)</span>
+                </div>
+                <span class="section-badge">Analyse Opérationnelle SAV & R&D Tapidor</span>
+            </div>
+            <p style="font-size:13px; color:#475569; margin-top:0; margin-bottom:18px;">
+                Chaque friction d'achat représente soit un panier abandonné en e-commerce, soit un motif de retour coûteux pour le distributeur. Voici les 5 dilemmes identifiés et les parades industrielles correspondantes pour Tapidor.
+            </p>
+
+            <div>
+                
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-left:4px solid #991b1b; border-radius:8px; padding:20px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                    <div>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <h4 style="margin:0; font-size:15px; color:#0f172a; font-weight:700;">Dilemme d'Échelle & Implantation Salon</h4>
+                            <span style="background:#fef2f2; color:#991b1b; font-weight:800; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; padding:2px 6px; border-radius:4px;">Risque : CRITIQUE</span>
+                        </div>
+                        <div style="font-size:12px; color:#64748b; margin-top:4px;">Volume de requêtes : <strong>464 verbatims</strong> (23.1% des dilemmes) • Impact retour estimé : <strong style="color:#991b1b;">4.8% des retours e-com</strong></div>
+                    </div>
+                </div>
+                <div style="background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; padding:12px; margin-bottom:12px; font-size:13px; color:#334155; font-style:italic;">
+                    « J'hésite vraiment entre le 160x230 et le 200x290 pour mon canapé 3 places, peur que ça fasse trop étriqué. Avez-vous une photo en situation ? »
+                </div>
+                <div style="font-size:12px; color:#0f172a; line-height:1.5;">
+                    <strong style="color:#1e3a8a;">🛠️ Recommandation Industrielle & Qualité Tapidor :</strong> Déployer des guides d'implantation salon 2D/3D & standardiser la confection 200×290 cm sur les métiers 4m.
+                </div>
+            </div>
+            
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-left:4px solid #b45309; border-radius:8px; padding:20px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                    <div>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <h4 style="margin:0; font-size:15px; color:#0f172a; font-weight:700;">Incertitude Entretien & Lavabilité Tambour</h4>
+                            <span style="background:#fffbeb; color:#b45309; font-weight:800; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; padding:2px 6px; border-radius:4px;">Risque : ÉLEVÉ</span>
+                        </div>
+                        <div style="font-size:12px; color:#64748b; margin-top:4px;">Volume de requêtes : <strong>385 verbatims</strong> (19.1% des dilemmes) • Impact retour estimé : <strong style="color:#991b1b;">3.2% des retours e-com</strong></div>
+                    </div>
+                </div>
+                <div style="background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; padding:12px; margin-bottom:12px; font-size:13px; color:#334155; font-style:italic;">
+                    « Est-ce qu'il passe réellement dans une machine 8kg standard sans plisser ni perdre son antidérapant au séchage ? »
+                </div>
+                <div style="font-size:12px; color:#0f172a; line-height:1.5;">
+                    <strong style="color:#1e3a8a;">🛠️ Recommandation Industrielle & Qualité Tapidor :</strong> Concevoir une sous-couche polymère flexible certifiée 30 lavages à 30°C sans rétraction dimensionnelle.
+                </div>
+            </div>
+            
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-left:4px solid #1e3a8a; border-radius:8px; padding:20px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                    <div>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <h4 style="margin:0; font-size:15px; color:#0f172a; font-weight:700;">Frictions Livraison, Conditionnement & Bords Plissés</h4>
+                            <span style="background:#eff6ff; color:#1e3a8a; font-weight:800; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; padding:2px 6px; border-radius:4px;">Risque : MODÉRÉ</span>
+                        </div>
+                        <div style="font-size:12px; color:#64748b; margin-top:4px;">Volume de requêtes : <strong>233 verbatims</strong> (11.6% des dilemmes) • Impact retour estimé : <strong style="color:#991b1b;">2.5% des retours e-com</strong></div>
+                    </div>
+                </div>
+                <div style="background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; padding:12px; margin-bottom:12px; font-size:13px; color:#334155; font-style:italic;">
+                    « Le tapis est arrivé plié en 4 au lieu d'être roulé, les plis marqués mettent des semaines à disparaître et les coins rebiquent. »
+                </div>
+                <div style="font-size:12px; color:#0f172a; line-height:1.5;">
+                    <strong style="color:#1e3a8a;">🛠️ Recommandation Industrielle & Qualité Tapidor :</strong> Obligation d'enroulement sur mandrin rigide + renfort thermocollé invisible sur les 4 coins pour éviter le soulèvement.
+                </div>
+            </div>
+            
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-left:4px solid #475569; border-radius:8px; padding:20px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                    <div>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <h4 style="margin:0; font-size:15px; color:#0f172a; font-weight:700;">Sensibilité Promo & Transparence Disponibilité Stock</h4>
+                            <span style="background:#f8fafc; color:#475569; font-weight:800; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; padding:2px 6px; border-radius:4px;">Risque : FAIBLE</span>
+                        </div>
+                        <div style="font-size:12px; color:#64748b; margin-top:4px;">Volume de requêtes : <strong>170 verbatims</strong> (8.4% des dilemmes) • Impact retour estimé : <strong style="color:#991b1b;">Impact direct panier moyen</strong></div>
+                    </div>
+                </div>
+                <div style="background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; padding:12px; margin-bottom:12px; font-size:13px; color:#334155; font-style:italic;">
+                    « Avez-vous un code promo pour ce modèle ? Est-il en stock immédiat pour expédition en France ? »
+                </div>
+                <div style="font-size:12px; color:#0f172a; line-height:1.5;">
+                    <strong style="color:#1e3a8a;">🛠️ Recommandation Industrielle & Qualité Tapidor :</strong> Stock tampon permanent sur les 3 formats best-sellers (160×230, 200×290, couloir 80×250).
+                </div>
+            </div>
+            
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-left:4px solid #065f46; border-radius:8px; padding:20px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                    <div>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <h4 style="margin:0; font-size:15px; color:#0f172a; font-weight:700;">Toucher Réel, Douceur & Perte de Bourre (Shedding)</h4>
+                            <span style="background:#ecfdf5; color:#065f46; font-weight:800; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; padding:2px 6px; border-radius:4px;">Risque : MODÉRÉ</span>
+                        </div>
+                        <div style="font-size:12px; color:#64748b; margin-top:4px;">Volume de requêtes : <strong>70 verbatims</strong> (3.5% des dilemmes) • Impact retour estimé : <strong style="color:#991b1b;">2.1% des retours e-com</strong></div>
+                    </div>
+                </div>
+                <div style="background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; padding:12px; margin-bottom:12px; font-size:13px; color:#334155; font-style:italic;">
+                    « J'ai peur que la laine perde ses poils avec le robot aspirateur. Est-ce un poil doux pour marcher pieds nus ? »
+                </div>
+                <div style="font-size:12px; color:#0f172a; line-height:1.5;">
+                    <strong style="color:#1e3a8a;">🛠️ Recommandation Industrielle & Qualité Tapidor :</strong> Fil polypropylène peigné frisé 1800 dtex (zéro bourre) ou traitement de brossage usine préalable sur les fils naturels.
+                </div>
+            </div>
+            
+            </div>
         </div>
-        <div class="opp-card" style="background:#eff6ff; border-color:#bfdbfe;">
-            <div style="font-weight:700; color:#1e40af; font-size:14px; margin-bottom:6px;">FAIBLE CONCURRENCE + FORTE MARGE (Niche Émergente)</div>
-            <ul style="margin:0; padding-left:18px; font-size:13px; color:#1e3a8a;">
-                <li><strong>Tapis Texturés 3D / Relief Écru :</strong> Moins d'acteurs industriels capables de tisser du relief de qualité à prix accessible.</li>
-                <li><strong>Formats Sur-Mesure / Couloir Large :</strong> Forte fidélisation client et marges brutes élevées.</li>
-            </ul>
-        </div>
-        <div class="opp-card" style="background:#fefce8; border-color:#fef08a;">
-            <div style="font-weight:700; color:#854d0e; font-size:14px; margin-bottom:6px;">FORTE SATURATION (Guerre des Prix)</div>
-            <ul style="margin:0; padding-left:18px; font-size:13px; color:#713f12;">
-                <li><strong>Berbère Noir & Blanc Basique :</strong> Marché encombré, guerre de promotions agressives (-50% à -70%). Nécessite une différenciation par la matière.</li>
-            </ul>
-        </div>
-        <div class="opp-card" style="background:#fef2f2; border-color:#fecaca;">
-            <div style="font-weight:700; color:#991b1b; font-size:14px; margin-bottom:6px;">SIGNAL FAIBLE / EN DÉCLIN (Désinvestissement)</div>
-            <ul style="margin:0; padding-left:18px; font-size:13px; color:#7f1d1d;">
-                <li><strong>Gris Froid Uni & Petits Formats :</strong> Baisse continue de l'intérêt consommateur et déstockage massif constaté.</li>
-            </ul>
-        </div>
+
     </div>
 
-    <!-- 9. Product Trend Cards -->
-    <div class="section-title">
-        <span class="section-number">9</span> Fiches Tendances Produits (Pour Bureau de Style & R&D)
-    </div>
-    <div class="grid-3">
-        <div class="trend-card">
-            <span class="trend-badge">Tendance 01</span>
-            <h4 style="margin:0 0 6px 0; font-size:15px; color:#0f172a;">Le Neutre Minéral Texturé</h4>
-            <div style="font-size:12px; color:#475569; margin-bottom:8px;"><strong>Couleurs :</strong> Beige, Écru, Sable, Ivoire</div>
-            <div style="font-size:12px; color:#475569; margin-bottom:8px;"><strong>Construction :</strong> Velours structuré, ciselage 3D, bouclé</div>
-            <div style="font-size:12px; color:#475569; margin-bottom:8px;"><strong>Formats :</strong> 160×230 cm et 200×290 cm</div>
-            <div style="font-size:12px; color:#1e3a8a; font-weight:600;">Positionnement : Cœur de gamme chic (120€ - 260€)</div>
+    <!-- ============================================================= -->
+    <!-- VIEW 6: COLLECTIONS & ROADMAP 2026/2027 -->
+    <!-- ============================================================= -->
+    <div id="view-roadmap" class="view-content" style="display:none;">
+
+        <!-- 4 Trend Cards -->
+        <div class="section-title" style="margin-bottom:16px;">
+            <span>Fiches Tendances Produits Clés en Main (Pour le Bureau de Style Tapidor)</span>
         </div>
-        <div class="trend-card">
-            <span class="trend-badge">Tendance 02</span>
-            <h4 style="margin:0 0 6px 0; font-size:15px; color:#0f172a;">L'Héritage Berbère Allégé</h4>
-            <div style="font-size:12px; color:#475569; margin-bottom:8px;"><strong>Couleurs :</strong> Fond écru chaud, losanges discrets</div>
-            <div style="font-size:12px; color:#475569; margin-bottom:8px;"><strong>Construction :</strong> Poil mi-long doux (aspect laine peignée)</div>
-            <div style="font-size:12px; color:#475569; margin-bottom:8px;"><strong>Formats :</strong> 160×230 cm et 200×290 cm</div>
-            <div style="font-size:12px; color:#1e3a8a; font-weight:600;">Positionnement : Best-seller volume (99€ - 190€)</div>
+        <div class="grid-2" style="margin-bottom:24px;">
+            <div class="card" style="margin-bottom:0;">
+                <span style="background:#eff6ff; color:#1e3a8a; font-size:11px; font-weight:800; padding:2px 8px; border-radius:4px; text-transform:uppercase;">Collection 01 • Vedette</span>
+                <h4 style="margin:8px 0 6px 0; font-size:16px; color:#0f172a;">Le Minéral Texturé 3D</h4>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Palette :</strong> Écru, Beige chaud, Sable, Ficelle</div>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Tissage :</strong> Velours structuré, ciselage 3D, effet bouclé</div>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Formats :</strong> 160×230 cm et 200×290 cm</div>
+                <div style="font-size:12px; color:#1e3a8a; font-weight:700;">Prix Recommandé : 149 € - 249 € (Marge brute ~52%)</div>
+            </div>
+
+            <div class="card" style="margin-bottom:0;">
+                <span style="background:#eff6ff; color:#1e3a8a; font-size:11px; font-weight:800; padding:2px 8px; border-radius:4px; text-transform:uppercase;">Collection 02 • Volume</span>
+                <h4 style="margin:8px 0 6px 0; font-size:16px; color:#0f172a;">Le Nomade Berbère Allégé</h4>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Palette :</strong> Fond crème lumineux, losanges très fins discrets</div>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Tissage :</strong> Poil mi-long doux sans effilochage (18-22 mm)</div>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Formats :</strong> 160×230 cm, 200×290 cm et passage 80×250 cm</div>
+                <div style="font-size:12px; color:#1e3a8a; font-weight:700;">Prix Recommandé : 119 € - 199 € (Best-seller volume garanti)</div>
+            </div>
+
+            <div class="card" style="margin-bottom:0;">
+                <span style="background:#eff6ff; color:#1e3a8a; font-size:11px; font-weight:800; padding:2px 8px; border-radius:4px; text-transform:uppercase;">Collection 03 • Innovation</span>
+                <h4 style="margin:8px 0 6px 0; font-size:16px; color:#0f172a;">L'Easy-Care Famille Lavable 30°C</h4>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Palette :</strong> Motifs vintage patinés, sauge, terracotta estompé</div>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Tissage :</strong> Tissé plat souple pliable en tambour avec dos TPR</div>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Formats :</strong> 140×200 cm et 160×230 cm</div>
+                <div style="font-size:12px; color:#1e3a8a; font-weight:700;">Prix Recommandé : 99 € - 179 € (Forte demande jeunes parents & animaux)</div>
+            </div>
+
+            <div class="card" style="margin-bottom:0;">
+                <span style="background:#eff6ff; color:#1e3a8a; font-size:11px; font-weight:800; padding:2px 8px; border-radius:4px; text-transform:uppercase;">Collection 04 • Prescription</span>
+                <h4 style="margin:8px 0 6px 0; font-size:16px; color:#0f172a;">Le Prestige Architectural</h4>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Palette :</strong> Ocre, brun sourd, terre d'ombre, lin brut</div>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Tissage :</strong> Mélange laine peignée & viscose soyeuse en relief</div>
+                <div style="font-size:12px; color:#475569; margin-bottom:6px;"><strong>Formats :</strong> 200×290 cm et 240×340 cm sur-mesure</div>
+                <div style="font-size:12px; color:#1e3a8a; font-weight:700;">Prix Recommandé : 280 € - 550 € (Boutiques de créateurs & architectes)</div>
+            </div>
         </div>
-        <div class="trend-card">
-            <span class="trend-badge">Tendance 03</span>
-            <h4 style="margin:0 0 6px 0; font-size:15px; color:#0f172a;">Le Pratique Lavable Famille</h4>
-            <div style="font-size:12px; color:#475569; margin-bottom:8px;"><strong>Couleurs :</strong> Motifs vintage estompés, terre cuite, vert sauge</div>
-            <div style="font-size:12px; color:#475569; margin-bottom:8px;"><strong>Construction :</strong> Tissé plat souple ou poil ras lavable en tambour</div>
-            <div style="font-size:12px; color:#475569; margin-bottom:8px;"><strong>Formats :</strong> 140×200 cm et 160×230 cm</div>
-            <div style="font-size:12px; color:#1e3a8a; font-weight:600;">Positionnement : Usage intensif / Enfants & Animaux</div>
+
+        <!-- Quarterly Roadmap -->
+        <div class="card">
+            <div class="section-header">
+                <div class="section-title">
+                    <span>Feuille de Route Trimestrielle Tapidor (T4 2026 → T3 2027)</span>
+                </div>
+                <span class="section-badge">Jalons Industriels & Lancement Commercial</span>
+            </div>
+            <div>
+                
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-top:3px solid #1e3a8a; border-radius:8px; padding:18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="background:#1e3a8a; color:#ffffff; font-size:11px; font-weight:800; padding:2px 8px; border-radius:4px;">T4 2026</span>
+                    <span style="font-size:11px; color:#64748b; font-weight:600;">Périmètre : Direction R&D & Atelier</span>
+                </div>
+                <h4 style="margin:0 0 10px 0; font-size:14px; color:#0f172a; font-weight:700;">Lancement Capsule "Minéral Texturé" & Réalignement Palette</h4>
+                <ul style="margin:0; padding-left:18px; font-size:12px; color:#334155; line-height:1.6;">
+                    <li style='margin-bottom:4px;'>Conversion de 25% des métiers à tisser vers la palette écru/beige/ficelle.</li><li style='margin-bottom:4px;'>Développement des 3 armures de relief 3D (bouclé, ciselé, velours structuré).</li><li style='margin-bottom:4px;'>Présentation de la collection aux centrales d'achat (Saint Maclou, Maisons du Monde, Alinéa).</li>
+                </ul>
+            </div>
+            
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-top:3px solid #1e3a8a; border-radius:8px; padding:18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="background:#1e3a8a; color:#ffffff; font-size:11px; font-weight:800; padding:2px 8px; border-radius:4px;">T1 2027</span>
+                    <span style="font-size:11px; color:#64748b; font-weight:600;">Périmètre : R&D Matériaux & Qualité</span>
+                </div>
+                <h4 style="margin:0 0 10px 0; font-size:14px; color:#0f172a; font-weight:700;">Industrialisation de la Ligne "Easy-Care Lavable 30°C"</h4>
+                <ul style="margin:0; padding-left:18px; font-size:12px; color:#334155; line-height:1.6;">
+                    <li style='margin-bottom:4px;'>Validation des tests d'usure et 30 cycles de lavage tambour en laboratoire accrédité.</li><li style='margin-bottom:4px;'>Mise en place de l'enduction dossier TPR souple antidérapant.</li><li style='margin-bottom:4px;'>Dépôt de la marque commerciale ou label usine réassurance consommateur.</li>
+                </ul>
+            </div>
+            
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-top:3px solid #1e3a8a; border-radius:8px; padding:18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="background:#1e3a8a; color:#ffffff; font-size:11px; font-weight:800; padding:2px 8px; border-radius:4px;">T2 2027</span>
+                    <span style="font-size:11px; color:#64748b; font-weight:600;">Périmètre : Direction Industrielle</span>
+                </div>
+                <h4 style="margin:0 0 10px 0; font-size:14px; color:#0f172a; font-weight:700;">Standardisation Grands Formats (200×290 & 240×340 cm)</h4>
+                <ul style="margin:0; padding-left:18px; font-size:12px; color:#334155; line-height:1.6;">
+                    <li style='margin-bottom:4px;'>Optimisation du plan de charge des métiers 4,00 m (objectif taux de chute < 1,5%).</li><li style='margin-bottom:4px;'>Nouveau conditionnement en mandrin renforcé pour éliminer les réclamations de plis à la livraison.</li><li style='margin-bottom:4px;'>Lancement d'une gamme coordonnée couloirs/passages (80×250 cm) sur les chutes de laize.</li>
+                </ul>
+            </div>
+            
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-top:3px solid #1e3a8a; border-radius:8px; padding:18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.02);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="background:#1e3a8a; color:#ffffff; font-size:11px; font-weight:800; padding:2px 8px; border-radius:4px;">T3 2027</span>
+                    <span style="font-size:11px; color:#64748b; font-weight:600;">Périmètre : Studio Design & Export</span>
+                </div>
+                <h4 style="margin:0 0 10px 0; font-size:14px; color:#0f172a; font-weight:700;">Extension In & Out Résistant UV & Tapis Organiques</h4>
+                <ul style="margin:0; padding-left:18px; font-size:12px; color:#334155; line-height:1.6;">
+                    <li style='margin-bottom:4px;'>Formulation de fil polypropylène stabilisé aux UV pour usage terrasse et salon.</li><li style='margin-bottom:4px;'>Pilote de découpe numérique CNC pour formes libres asymétriques destinées aux éditeurs.</li><li style='margin-bottom:4px;'>Bilan de rentabilité et ajustement du positionnement prix selon les volumes B2B.</li>
+                </ul>
+            </div>
+            
+            </div>
         </div>
+
     </div>
 
-    <!-- 10. Recommendations for Tapidor -->
-    <div class="section-title">
-        <span class="section-number">10</span> Recommandations Stratégiques pour Tapidor
-    </div>
-    <div class="card" style="margin-bottom:24px;">
-        <ol style="margin:0; padding-left:20px; font-size:14px; color:#334155; line-height:1.7;">
-            <li><strong>Basculer la palette industrielle vers les neutres chauds :</strong> Réduire de 25% la production de références grises froides au profit de palettes écru/beige/ficelle avec effet de texture.</li>
-            <li><strong>Accélérer sur le format 200×290 cm :</strong> Répondre à l'engouement des salons modernes en augmentant la part de ce grand format dans les plannings de tissage.</li>
-            <li><strong>Développer une ligne "Easy-Care / Lavable" :</strong> Confirmé à la fois par les annonces sponsorisées et par les questions fréquentes des acheteurs comme le critère de réassurance #1.</li>
-            <li><strong>Valoriser le savoir-faire matière et texture :</strong> Dans la communication de marque, privilégier des photos d'ambiance de vie (lifestyle) et des vidéos de déballage in-situ qui surperforment organiquement sur Instagram.</li>
-            <li><strong>Capitaliser sur les formats passage/couloir :</strong> Offrir des déclinaisons couloir pour chaque collection majeure de salon, segment à très faible sensibilité au prix.</li>
-        </ol>
-    </div>
-
-    <!-- Methodology & Limitations -->
-    <div class="methodo-box">
-        <strong>Méthodologie & Limites de la Donnée :</strong>
-        Sources : Meta Ads Library (API officielle) & Veille Organique Multi-plateforme (Instagram & Facebook). Échantillon : 679 annonces actives et 31 vendeurs qualifiés en France (23 marques de référence + 8 acteurs diplômés automatiquement).
-        <br><em>Règle de filtrage Facebook :</em> Le volume d'abonnés Facebook étant obsolète/inactif, la qualification FB repose exclusivement sur la cadence de publication, le taux d'interaction réel par post et la preuve d'activité commerciale active (campagnes Meta Ads vérifiées).
+    <!-- Methodology Footer -->
+    <div style="background:#f1f5f9; border-radius:8px; padding:16px 20px; font-size:12px; color:#64748b; line-height:1.6; margin-top:20px;">
+        <strong style="color:#0f172a;">Méthodologie & Gouvernance des Données :</strong>
+        Données collectées via l'API officielle Meta Ads Library (échantillon France & Europe) et la veille organique multi-plateforme (Instagram Graph & pages Facebook vérifiées).
+        L'ensemble des distributeurs non pertinents (print-on-demand, vendeurs éphémères, accessoires) a été exclu du référentiel pour garantir une comparabilité industrielle rigoureuse.
+        <em>Mise à jour automatique par le moteur Rug Listener pour TAPIDOR.</em>
     </div>
 
 </div>
+
+<script>
+function showView(viewId) {
+    var tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(function(t) { t.classList.remove('active'); });
+
+    var views = document.querySelectorAll('.view-content');
+
+    if (viewId === 'all') {
+        views.forEach(function(v) { v.style.display = 'block'; });
+        document.getElementById('tab-all').classList.add('active');
+    } else {
+        views.forEach(function(v) { v.style.display = 'none'; });
+        var targetView = document.getElementById('view-' + viewId);
+        if (targetView) targetView.style.display = 'block';
+        var targetTab = document.getElementById('tab-' + viewId);
+        if (targetTab) targetTab.classList.add('active');
+    }
+}
+
+function filterCompetitors() {
+    var searchInput = document.getElementById('comp-search').value.toLowerCase();
+    var catSelect = document.getElementById('comp-cat-select').value;
+    var rows = document.querySelectorAll('#competitor-table-body tr.comp-row');
+    var visible = 0;
+
+    rows.forEach(function(row) {
+        var text = row.innerText.toLowerCase();
+        var cat = row.getAttribute('data-category') || '';
+        var matchSearch = !searchInput || text.indexOf(searchInput) !== -1;
+        var matchCat = catSelect === 'all' || cat === catSelect;
+
+        if (matchSearch && matchCat) {
+            row.style.display = '';
+            visible++;
+        } else {
+            row.style.display = 'none';
+        }
+    });
+
+    var badge = document.getElementById('comp-count-badge');
+    if (badge) {
+        badge.innerText = visible + ' marque(s) affichée(s)';
+    }
+}
+</script>
 
 </body>
 </html>
